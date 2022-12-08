@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transaction_navigation_graph"
+    app:startDestination="@id/memberSelectorFragment">
+
+    <fragment
+        android:id="@+id/memberSelectorFragment"
+        android:name="com.everydayapps.roomsix.ui.staff.fragments.MemberSelectorFragment"
+        android:label="fragment_member_selector"
+        tools:layout="@layout/fragment_member_selector" >
+        <action
+            android:id="@+id/action_memberSelectorFragment_to_serviceSelectorFragment"
+            app:destination="@id/serviceSelectorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/serviceSelectorFragment"
+        android:name="com.everydayapps.roomsix.ui.staff.fragments.ServiceSelectorFragment"
+        android:label="fragment_service_selector"
+        tools:layout="@layout/fragment_service_selector" >
+        <action
+            android:id="@+id/action_serviceSelectorFragment_to_memberSelectorFragment"
+            app:destination="@id/memberSelectorFragment" />
+    </fragment>
+
+</navigation>
