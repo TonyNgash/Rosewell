@@ -54,19 +54,12 @@ class MemberSelectorFragment : Fragment(), PublicMemberAdapter.PublicRowClickLis
     }
 
     override fun onPublicMemberListener(member: Member,myView: View) {
-        //val name = "${member.firstName} ${member.lastName}"
-        //Toast.makeText(context,"You clicked on $name", Toast.LENGTH_LONG).show()
+
         SingletonTransaction.initObj(requireContext())
         SingletonTransaction.recordMember(member)
 
         Navigation.findNavController(myView).navigate(R.id.action_memberSelectorFragment_to_serviceSelectorFragment)
     }
 
-//    fun switchFragment(fragment: Fragment, title: String){
-//        val fragmentManger = activity?.supportFragmentManager
-//        val fragmentTransaction = fragmentManger?.beginTransaction()
-//        fragmentTransaction?.replace(R.id.public_fragment_container,fragment)
-//        fragmentTransaction?.commit()
-//        activity?.setTitle(title)
-//    }
+
 }

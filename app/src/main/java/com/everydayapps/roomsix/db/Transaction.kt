@@ -10,6 +10,10 @@ class Transaction(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "transactionId")
     val transactionId: Int,
+    @ColumnInfo(name = "memberId")
+    val memberId : Int,
+    @ColumnInfo(name = "serviceId")
+    val serviceId: Int,
     @ColumnInfo(name = "fullname")
     val fullname: String,
     @ColumnInfo(name = "service")
@@ -19,5 +23,11 @@ class Transaction(
     @ColumnInfo(name = "time")
     val time : String,
     @ColumnInfo(name = "date")
-    val date : String
+    val date : String,
+    @ColumnInfo(name = "long_date")
+    val longDate : String,
+    @ColumnInfo(name = "year_week")
+    val yearWeek : String,
+    @ColumnInfo(name = "payment_method")
+    val payment_method : String
 )

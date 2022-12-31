@@ -11,8 +11,20 @@
         android:label="Choose a member"
         tools:layout="@layout/fragment_member_transactions">
         <action
-            android:id="@+id/action_memberTransactionsFragment_to_transactionFragment"
+            android:id="@+id/action_memberTransactionsFragment_to_weeklyTransactionsFragment"
+            app:destination="@+id/weeklyTransactionsFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/weeklyTransactionsFragment"
+        android:name="com.everydayapps.roomsix.ui.admin.fragments.MemberWeeklyFragment"
+        android:label="Weekly Transactions"
+        tools:layout="@layout/fragment_member_weekly">
+        <action
+            android:id="@+id/action_weeklyTransactionsFragment_to_transactionFragment"
             app:destination="@+id/transactionFragment"/>
+        <action
+            android:id="@+id/action_weeklyTransactionsFragment_to_memberTransactionsFragment"
+            app:destination="@+id/memberTransactionsFragment"/>
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
@@ -20,7 +32,7 @@
         android:label="Transactions"
         tools:layout="@layout/fragment_transaction">
         <action
-            android:id="@+id/action_transactionFragment_to_memberTransactionFragment"
-            app:destination="@+id/memberTransactionsFragment"/>
+            android:id="@+id/action_transactionFragment_to_weeklyTransactionsFragment"
+            app:destination="@+id/weeklyTransactionsFragment"/>
     </fragment>
 </navigation>

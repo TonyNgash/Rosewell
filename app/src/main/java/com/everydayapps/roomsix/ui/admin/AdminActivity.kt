@@ -9,6 +9,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.everydayapps.roomsix.ui.staff.MainActivity
 import com.everydayapps.roomsix.R
 import com.everydayapps.roomsix.ui.admin.fragments.*
@@ -36,6 +38,7 @@ class AdminActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
         replaceFragment(DashboardFragment(),"Dashboard")
         adminNavigationView.setNavigationItemSelectedListener{
             it.isChecked =true
@@ -49,6 +52,8 @@ class AdminActivity : AppCompatActivity() {
             }
             true
         }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.member_transactions_fragment_container)
+
     }
     private fun logout() {
         val i = Intent(this, MainActivity::class.java)
@@ -76,7 +81,7 @@ class AdminActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.public_fragment_container)
+        val navController = findNavController(R.id.member_transactions_fragment_container)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

@@ -10,13 +10,58 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/serviceSelectorRecyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.5"
         android:layout_height="match_parent"
         tools:listitem="@layout/service_selector_item"
         android:padding="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/staffDailyTransactions"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/dailyViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:text="Today's Transactions By:"
+        android:textSize="24sp"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:background="@color/card_04_bg"
+        app:layout_constraintStart_toEndOf="@+id/serviceSelectorRecyclerView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/staffDailyTransactions"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/staffDailyTransactionsRecyclerView"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.5"
+        android:layout_height="0dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        tools:listitem="@layout/staff_daily_transaction_item"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintStart_toEndOf="@+id/serviceSelectorRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/dailyViewTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dailyStaffTotal"
+        />
+    <TextView
+        android:id="@+id/dailyStaffTotal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:text="Total: Kshs 2000"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:background="@color/card_05_bg"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@+id/serviceSelectorRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/staffDailyTransactionsRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

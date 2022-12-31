@@ -15,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.everydayapps.roomsix.R
 import com.everydayapps.roomsix.ui.admin.AdminActivity
+import com.everydayapps.roomsix.vm.SingletonTransaction
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -78,15 +79,21 @@ class MainActivity : AppCompatActivity() {
         }
         loginBtn.setOnClickListener{
             loginDialog.dismiss()
-            performLogin()
+            performLogin(password.text.toString())
         }
 
         loginDialog.show()
     }
-    private fun performLogin() {
-        val i = Intent(this, AdminActivity::class.java)
-        startActivity(i)
-        finish()
+    private fun performLogin(password : String) {
+        SingletonTransaction.initObj(this)
+        val currentPassword = SingletonTransaction.getPassword()
+        if(password == currentPassword){
+            val i = Intent(this, AdminActivity::class.java)
+            startActivity(i)
+            finish()
+        }else{
+            Toast.makeText(this,"Wrong Password Please Try Again",Toast.LENGTH_LONG).show()
+        }
     }
     private fun replaceFragment(fragment: Fragment, title: String){
         val fragmentManger = supportFragmentManager

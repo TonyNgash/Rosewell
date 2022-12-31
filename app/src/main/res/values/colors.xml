@@ -10,8 +10,22 @@
 
     <color name="rose_well_primary">#EA07CC</color>
     <color name="rose_well_secondary">#652267</color>
+    <color name="rose_well_tatiaary">#642365</color>
 
     <color name="edit_text_bg">#F5F5F5</color>
-    <color name="main_btn_bg">#E91E63</color>
+    <color name="main_btn_bg">#FF8BB3</color>
     <color name="bg_subtle_grey">#CCCCCC</color>
+
+    <color name="fade_primary">#FD67D8</color>
+
+<!--    dashboard card colors-->
+
+    <color name="dash_bg">#121b22</color>
+    <color name="card_01_bg">#1f2e35</color>
+    <color name="card_02_bg">#ef0e6c</color>
+    <color name="card_03_bg">#4b4b6b</color>
+    <color name="card_04_bg">#09648f</color>
+    <color name="card_05_bg">#23a638</color>
+    <color name="card_06_bg">#341f35</color>
+
 </resources>

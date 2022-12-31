@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.everydayapps.roomsix.R
 import com.everydayapps.roomsix.db.Member
-import com.everydayapps.roomsix.vm.PublicMemberAdapter
+import com.everydayapps.roomsix.vm.MemberTransactionAdapter
 import com.everydayapps.roomsix.vm.RosewellViewModel
 import com.everydayapps.roomsix.vm.SingletonTransaction
 
 
-class MemberTransactionsFragment : Fragment(), PublicMemberAdapter.PublicRowClickListener {
+class MemberTransactionsFragment : Fragment(), MemberTransactionAdapter.MemberTransactionRowClickListener {
 
     lateinit var publicMemberRecyclerView: RecyclerView
-    lateinit var publicRecyclerViewAdapter: PublicMemberAdapter
+    lateinit var publicRecyclerViewAdapter: MemberTransactionAdapter
     lateinit var rosewellViewModel: RosewellViewModel
     lateinit var myContext : Context
 
@@ -37,11 +37,12 @@ class MemberTransactionsFragment : Fragment(), PublicMemberAdapter.PublicRowClic
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        myContext = requireContext()
         publicMemberRecyclerView = view.findViewById(R.id.memberTransactionRecyclerView)
 
         publicMemberRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            publicRecyclerViewAdapter = PublicMemberAdapter(this@MemberTransactionsFragment,view)
+            publicRecyclerViewAdapter = MemberTransactionAdapter(this@MemberTransactionsFragment,view)
             adapter = publicRecyclerViewAdapter
         }
         rosewellViewModel = ViewModelProvider(this).get(RosewellViewModel::class.java)
@@ -50,12 +51,18 @@ class MemberTransactionsFragment : Fragment(), PublicMemberAdapter.PublicRowClic
             publicRecyclerViewAdapter.notifyDataSetChanged()
         })
         rosewellViewModel.getAllMembers()
+
+
     }
 
-    override fun onPublicMemberListener(member: Member,myView: View) {
+    override fun onMemberTransactionListener(member: Member,myView: View) {
         val name = "${member.firstName} ${member.lastName}"
-        Toast.makeText(context,"You clicked on $name", Toast.LENGTH_LONG).show()
-        Navigation.findNavController(myView).navigate(R.id.action_memberTransactionsFragment_to_transactionFragment)
+        SingletonTransaction.initObj(myContext)
+        SingletonTransaction.recordMemberTransactionDetails(member)
+
+        //Toast.makeText(context,"You clicked on $name the id is: ${member.memberId}", Toast.LENGTH_LONG).show()
+
+        Navigation.findNavController(myView).navigate(R.id.action_memberTransactionsFragment_to_weeklyTransactionsFragment)
     }
 
 

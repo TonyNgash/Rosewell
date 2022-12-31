@@ -16,9 +16,9 @@ class MemberTransactionAdapter(val listener: MemberTransactionAdapter.MemberTran
         this.items = data
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): MemberTransactionAdapter.MemberTransactionViewHolder {
-        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.member_transaction_item,parent,false)
-        return MemberTransactionAdapter.MemberTransactionViewHolder(inflater, listener)
+    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): MemberTransactionViewHolder {
+        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.admin_member_transaction_item,parent,false)
+        return MemberTransactionViewHolder(inflater, listener)
     }
 
     override fun onBindViewHolder(holder: MemberTransactionViewHolder, position: Int) {
@@ -32,7 +32,7 @@ class MemberTransactionAdapter(val listener: MemberTransactionAdapter.MemberTran
         return items.size
     }
     class MemberTransactionViewHolder(view: View,val listener: MemberTransactionRowClickListener):RecyclerView.ViewHolder(view){
-        var publicMemberName: TextView = view.findViewById(R.id.admin_member_name)
+        var publicMemberName: TextView = view.findViewById(R.id.member_transaction_name)
 
         fun bind(data: Member){
             val displayText = "${data.firstName} ${data.lastName}"

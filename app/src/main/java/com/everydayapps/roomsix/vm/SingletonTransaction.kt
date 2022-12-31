@@ -19,23 +19,51 @@ class SingletonTransaction(myContext: Context) {
             editor = sharedPreferences.edit()
         }
         fun recordMember(selectedMember: Member){
-
             editor.putString("fname",selectedMember.firstName)
             editor.putString("lname",selectedMember.lastName)
+            editor.putInt("memberid",selectedMember.memberId)
             editor.commit()
         }
-        fun recordService(selectedService: Service){
-            editor.putString("title",selectedService.serviceTitle)
-            editor.putString("price",selectedService.servicePrice)
+        fun recordMemberTransactionDetails(member: Member){
+            editor.putInt("tmid",member.memberId)
+            editor.putString("tfname",member.firstName)
+            editor.putString("tlname",member.lastName)
             editor.commit()
+        }
+        fun recordPaymentMethod(method: String){
+            editor.putString("paymentMethod",method)
+            editor.commit()
+        }
+        fun getPaymentMethod():String{
+            val method = sharedPreferences.getString("paymentMethod","")
+            return method.toString()
+        }
+        fun setPassword(password : String){
+            editor.putString("admin_password",password)
+            editor.commit()
+        }
+        fun getPassword():String{
+            val pass = sharedPreferences.getString("admin_password","98765432")
+            return pass.toString()
+        }
+        fun getTmid():Int{
+            return sharedPreferences.getInt("tmid",0)
+        }
+        fun getMemberTransactionFullname(): String{
+            val tfname = sharedPreferences.getString("tfname","")
+            val tlname = sharedPreferences.getString("tlname","")
+            return "$tfname $tlname"
         }
         fun getFullName() :String{
             val fname = sharedPreferences.getString("fname","")
             val lname = sharedPreferences.getString("lname","")
             return "$fname $lname"
         }
+        fun getMemberId(): Int{
+            return sharedPreferences.getInt("memberid",0)
+        }
         fun getService() :String{
-            val service = sharedPreferences.getString("service","")
+            val service = sharedPreferences.getString("title","")
             return "$service"
         }
         fun getPrice() :String{
@@ -45,6 +73,8 @@ class SingletonTransaction(myContext: Context) {
         fun destroyTransaction(){
             editor.remove(SHARED_PREF_NAME)
         }
+
+
     }
 
 }
